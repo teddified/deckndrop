@@ -28,15 +28,19 @@ export default function(state = initialState, action = {}) {
       }
     case ACTIONS.ADD_TO_DECK:
       if (state.deck && state.deck[state.activeCard.name]) {
-        return {
-          ...state,
-          deck: {
-            ...state.deck,
-            [state.activeCard.name]: {
-              ...state.deck[state.activeCard.name],
-              count: state.deck[state.activeCard.name].count + 1
+        if (state.deck[state.activeCard.name].count < 4) {
+          return {
+            ...state,
+            deck: {
+              ...state.deck,
+              [state.activeCard.name]: {
+                ...state.deck[state.activeCard.name],
+                count: state.deck[state.activeCard.name].count + 1
+              }
             }
           }
+        } else {
+          return state
         }
       } else {
         return {
