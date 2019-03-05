@@ -54,6 +54,20 @@ export default function(state = initialState, action = {}) {
           }
         }
       }
+    case ACTIONS.REMOVE_CARD:
+      const index = Object.values(state.deck).findIndex(
+        element => element.url === action.payload.url
+      )
+      return {
+        ...state,
+        deck: {
+          ...state.deck,
+          [state.activeCard.name]: {
+            ...state.deck[state.activeCard.name],
+            count: state.deck[state.activeCard.name].count - 1
+          }
+        }
+      }
     default:
       return state
   }

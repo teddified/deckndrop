@@ -9,6 +9,7 @@ import TabBarIcon from '../components/TabBarIcon'
 import HomeScreenContainer from '../container/HomeScreenContainer'
 import DeckScreenContainer from '../container/DeckScreenContainer'
 import SettingsScreen from '../screens/SettingsScreen'
+import Colors from '../constants/Colors'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreenContainer
@@ -16,6 +17,11 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  tabBarOptions: {
+    style: {
+      backgroundColor: Colors.tabBar
+    }
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -34,6 +40,11 @@ const DeckStack = createStackNavigator({
 
 DeckStack.navigationOptions = {
   tabBarLabel: 'Deck',
+  tabBarOptions: {
+    style: {
+      backgroundColor: Colors.tabBar
+    }
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -48,6 +59,11 @@ const SettingsStack = createStackNavigator({
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
+  tabBarOptions: {
+    style: {
+      backgroundColor: Colors.tabBar
+    }
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

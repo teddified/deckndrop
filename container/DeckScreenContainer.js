@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import DeckScreen from '../screens/DeckScreen'
+import { removeCard, addToDeck } from '../actions'
 
 const mapStateToProps = state => {
   return {
@@ -9,7 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeDetailVis: visible => dispatch(changeDetailVis(visible))
+    removeCard: card => dispatch(removeCard(card)),
+    addToDeck: () => dispatch(addToDeck())
   }
 }
 

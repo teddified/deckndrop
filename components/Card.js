@@ -24,11 +24,12 @@ export default class Card extends Component {
         <FlatList
           data={state.cards}
           numColumns={2}
-          _keyExtractor={(item, index) => index}
+          // _keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => {
             if (item.image_uris && item.image_uris.large) {
               return (
                 <View
+                  key={item.id}
                   style={{
                     flex: 1,
                     flexDirection: 'row',
@@ -49,8 +50,8 @@ export default class Card extends Component {
             } else {
               return (
                 <View
+                  key={item.id}
                   stlye={{
-                    width: 146,
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center'
@@ -132,6 +133,7 @@ const styles = StyleSheet.create({
   flatlist: {
     height: 204,
     width: 146,
-    margin: 10
+    margin: 10,
+    borderRadius: 8
   }
 })

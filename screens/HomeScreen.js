@@ -8,14 +8,33 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  AsyncStorage
+  AsyncStorage,
+  ImageBackground
 } from 'react-native'
 import { WebBrowser } from 'expo'
 import Card from '../components/Card'
+import Layout from '../constants/Layout'
+import Colors from '../constants/Colors'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    title: "Deck n'Drop",
+    headerTintColor: 'white',
+    headerStyle: {
+      height: 70,
+      backgroundColor: Colors.tabBar
+    },
+    headerTitleStyle: {
+      fontFamily: 'bebas-kai',
+      fontWeight: '200',
+      fontSize: 32
+    },
+    headerRight: (
+      <Image
+        source={require('../assets/images/magnifier.png')}
+        style={{ height: 30, width: 30, marginRight: 10 }}
+      />
+    )
   }
 
   componentDidMount() {
@@ -51,11 +70,33 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.scroller}>
-        <View automaticallyAdjustContentInsets={false} style={styles.container}>
-          <Card data={this.props} />
-        </View>
-      </ScrollView>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'transparent',
+          position: 'relative'
+        }}
+      >
+        <Image
+          style={{
+            width: Layout.window.width,
+            height: Layout.window.height,
+            resizeMode: 'stretch',
+            position: 'absolute',
+            top: 0,
+            left: 0
+          }}
+          source={require('../assets/images/Background.jpg')}
+        />
+        <ScrollView style={styles.scroller}>
+          <View
+            automaticallyAdjustContentInsets={false}
+            style={styles.container}
+          >
+            <Card data={this.props} />
+          </View>
+        </ScrollView>
+      </View>
     )
   }
 }
@@ -66,7 +107,8 @@ const styles = StyleSheet.create({
   },
   scroller: {
     flex: 1,
-    marginTop: 30,
+    marginTop: 5,
+    marginBottom: 5,
     overflow: 'hidden'
   },
   bodyText: {
