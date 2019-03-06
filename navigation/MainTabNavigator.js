@@ -6,29 +6,32 @@ import {
 } from 'react-navigation'
 
 import TabBarIcon from '../components/TabBarIcon'
-import HomeScreenContainer from '../container/HomeScreenContainer'
+import CardScreenContainer from '../container/CardScreenContainer'
 import DeckScreenContainer from '../container/DeckScreenContainer'
-import SettingsScreen from '../screens/SettingsScreen'
+import StatsScreen from '../screens/StatsScreen'
 import Colors from '../constants/Colors'
+import CustomIcon from './CustomIcon'
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreenContainer
+const CardStack = createStackNavigator({
+  Card: CardScreenContainer
 })
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+CardStack.navigationOptions = {
+  tabBarLabel: 'Card',
   tabBarOptions: {
+    activeTintColor: 'white',
     style: {
+      height: 60,
       backgroundColor: Colors.tabBar
     }
   },
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <CustomIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+      img={
+        focused
+          ? require('../assets/images/cards_white.png')
+          : require('../assets/images/cards_grey.png')
       }
     />
   )
@@ -41,39 +44,51 @@ const DeckStack = createStackNavigator({
 DeckStack.navigationOptions = {
   tabBarLabel: 'Deck',
   tabBarOptions: {
+    activeTintColor: 'white',
     style: {
+      height: 60,
       backgroundColor: Colors.tabBar
     }
   },
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <CustomIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      img={
+        focused
+          ? require('../assets/images/deck_white.png')
+          : require('../assets/images/deck_grey.png')
+      }
     />
   )
 }
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen
+const StatsStack = createStackNavigator({
+  Stats: StatsScreen
 })
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+StatsStack.navigationOptions = {
+  tabBarLabel: 'Statistics',
   tabBarOptions: {
+    activeTintColor: 'white',
     style: {
+      height: 60,
       backgroundColor: Colors.tabBar
     }
   },
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <CustomIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      img={
+        focused
+          ? require('../assets/images/stats_white.png')
+          : require('../assets/images/stats_grey.png')
+      }
     />
   )
 }
 
 export default createBottomTabNavigator({
-  HomeStack,
+  CardStack,
   DeckStack,
-  SettingsStack
+  StatsStack
 })

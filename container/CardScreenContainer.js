@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import HomeScreen from '../screens/HomeScreen'
+import CardScreen from '../screens/CardScreen'
 import { changeDetailVis, setActiveCard, saveData, addToDeck } from '../actions'
 
 const mapStateToProps = state => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeScreen)
+)(CardScreen)

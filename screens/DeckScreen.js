@@ -66,7 +66,7 @@ export default class DeckScreen extends React.Component {
                 >
                   <View style={{ height: 102, width: 73 }}>
                     <Image
-                      style={{ height: 102, width: 73 }}
+                      style={{ height: 102, width: 73, borderRadius: 8 }}
                       source={{
                         uri: item.url
                       }}
@@ -74,7 +74,7 @@ export default class DeckScreen extends React.Component {
                     <View style={styles.cardCount}>
                       <Text
                         style={styles.cardCountButton}
-                        // onPress={() => removeCard()}
+                        onPress={() => removeCard(item)}
                       >
                         -
                       </Text>

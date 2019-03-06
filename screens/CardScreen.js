@@ -16,7 +16,7 @@ import Card from '../components/Card'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 
-export default class HomeScreen extends React.Component {
+export default class CardScreen extends React.Component {
   static navigationOptions = {
     title: "Deck n'Drop",
     headerTintColor: 'white',

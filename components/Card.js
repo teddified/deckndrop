@@ -15,15 +15,19 @@ import {
   Dimensions
 } from 'react-native'
 import reducer from '../reducer'
+import Layout from '../constants/Layout'
 
 export default class Card extends Component {
   renderFlatList() {
     const { state, changeDetailVis, setActiveCard } = this.props.data
+    let numColumns
+    if (Layout.window.width >= 768) numColumns = 5
+    if (Layout.window.width < 768) numColumns = 2
     return (
       <View style={styles.card}>
         <FlatList
           data={state.cards}
-          numColumns={2}
+          numColumns={numColumns}
           // _keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => {
             if (item.image_uris && item.image_uris.large) {

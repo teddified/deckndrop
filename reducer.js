@@ -27,6 +27,7 @@ export default function(state = initialState, action = {}) {
         cards: action.payload
       }
     case ACTIONS.ADD_TO_DECK:
+      console.log(state)
       if (state.deck && state.deck[state.activeCard.name]) {
         if (state.deck[state.activeCard.name].count < 4) {
           return {
@@ -58,16 +59,29 @@ export default function(state = initialState, action = {}) {
       const index = Object.values(state.deck).findIndex(
         element => element.url === action.payload.url
       )
-      return {
-        ...state,
-        deck: {
-          ...state.deck,
-          [state.activeCard.name]: {
-            ...state.deck[state.activeCard.name],
-            count: state.deck[state.activeCard.name].count - 1
+
+      console.log(action.payload)
+      if (state.deck[state.activeCard.name].count > 0) {
+        return {
+          ...state,
+          deck: {
+            ...state.deck,
+            [state.activeCard.name]: {
+              ...state.deck[state.activeCard.name],
+              count: state.deck[state.activeCard.name].count - 1
+            }
+          }
+        }
+      } else {
+        // const tempState = state.deck[action.payload.name]
+        return {
+          ...state,
+          deck: {
+            ...state.deck
           }
         }
       }
+
     default:
       return state
   }
