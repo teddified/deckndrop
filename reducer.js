@@ -1,7 +1,6 @@
 import ACTIONS from './actions'
 
 const initialState = {
-  cards: null,
   detailVisible: false,
   activeCard: null,
   deck: null
@@ -27,16 +26,15 @@ export default function(state = initialState, action = {}) {
         cards: action.payload
       }
     case ACTIONS.ADD_TO_DECK:
-      console.log(state)
-      if (state.deck && state.deck[state.activeCard.name]) {
-        if (state.deck[state.activeCard.name].count < 4) {
+      if (action.payload) {
+        if (state.deck[action.payload.name].count < 4) {
           return {
             ...state,
             deck: {
               ...state.deck,
-              [state.activeCard.name]: {
-                ...state.deck[state.activeCard.name],
-                count: state.deck[state.activeCard.name].count + 1
+              [action.payload.name]: {
+                ...state.deck[action.payload.name],
+                count: state.deck[action.payload.name].count + 1
               }
             }
           }
@@ -44,40 +42,55 @@ export default function(state = initialState, action = {}) {
           return state
         }
       } else {
-        return {
-          ...state,
-          deck: {
-            ...state.deck,
-            [state.activeCard.name]: {
-              count: 1,
-              url: state.activeCard.image_uris.small
+        if (state.deck && state.deck[state.activeCard.name]) {
+          if (state.deck[state.activeCard.name].count < 4) {
+            return {
+              ...state,
+              deck: {
+                ...state.deck,
+                [state.activeCard.name]: {
+                  ...state.deck[state.activeCard.name],
+                  count: state.deck[state.activeCard.name].count + 1
+                }
+              }
+            }
+          } else {
+            return state
+          }
+        } else {
+          return {
+            ...state,
+            deck: {
+              ...state.deck,
+              [state.activeCard.name]: {
+                count: 1,
+                url: state.activeCard.image_uris.small,
+                name: state.activeCard.name
+              }
             }
           }
         }
       }
+      break
     case ACTIONS.REMOVE_CARD:
-      const index = Object.values(state.deck).findIndex(
-        element => element.url === action.payload.url
-      )
-
-      console.log(action.payload)
-      if (state.deck[state.activeCard.name].count > 0) {
+      if (state.deck[action.payload.name].count > 1) {
         return {
           ...state,
           deck: {
             ...state.deck,
-            [state.activeCard.name]: {
-              ...state.deck[state.activeCard.name],
-              count: state.deck[state.activeCard.name].count - 1
+            [action.payload.name]: {
+              ...state.deck[action.payload.name],
+              count: state.deck[action.payload.name].count - 1
             }
           }
         }
       } else {
-        // const tempState = state.deck[action.payload.name]
+        const tempState = state
+        delete tempState.deck[action.payload.name]
         return {
-          ...state,
+          ...tempState,
           deck: {
-            ...state.deck
+            ...tempState.deck
           }
         }
       }

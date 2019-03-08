@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     removeCard: card => dispatch(removeCard(card)),
-    addToDeck: () => dispatch(addToDeck())
+    addToDeck: item => dispatch(addToDeck(item))
   }
 }
 

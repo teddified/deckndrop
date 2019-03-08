@@ -22,11 +22,12 @@ export default class Card extends Component {
     const { state, changeDetailVis, setActiveCard } = this.props.data
     let numColumns
     if (Layout.window.width >= 768) numColumns = 5
-    if (Layout.window.width < 768) numColumns = 2
+    if (Layout.window.width < 768 && Layout.window.width > 500) numColumns = 3
+    if (Layout.window.width <= 500) numColumns = 2
     return (
       <View style={styles.card}>
         <FlatList
-          data={state.cards}
+          data={state.cards.data}
           numColumns={numColumns}
           // _keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => {
