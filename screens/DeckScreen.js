@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 0.5,
     borderWidth: 0.5,
-    borderColor: '#fff'
+    borderColor: 'white'
   },
   cardCountButton: {
     width: 73 / 3,

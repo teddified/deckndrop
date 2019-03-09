@@ -27,9 +27,14 @@ export default class Card extends Component {
     return (
       <View style={styles.card}>
         <FlatList
-          data={state.cards.data}
+          data={
+            state.filteredCards
+              ? Object.values(state.filteredCards)
+              : state.cards.data
+          }
           numColumns={numColumns}
-          // _keyExtractor={(item, index) => item.id}
+          extraData={state}
+          _keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => {
             if (item.image_uris && item.image_uris.large) {
               return (

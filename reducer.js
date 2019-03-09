@@ -94,7 +94,16 @@ export default function(state = initialState, action = {}) {
           }
         }
       }
-
+    case ACTIONS.SAVE_FILTERED_CARDS:
+      return {
+        ...state,
+        filteredCards: action.payload
+      }
+    case ACTIONS.RESET_FILTER:
+      return {
+        ...state,
+        filteredCards: null
+      }
     default:
       return state
   }

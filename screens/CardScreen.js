@@ -9,42 +9,22 @@ import {
   View,
   StatusBar,
   AsyncStorage,
+  TextInput,
   ImageBackground
 } from 'react-native'
 import { WebBrowser } from 'expo'
 import Card from '../components/Card'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
+import SearchBar from '../components/SearchBar'
 
 export default class CardScreen extends React.Component {
   static navigationOptions = {
-    title: "Deck n'Drop",
-    headerTintColor: 'white',
-    headerStyle: {
-      height: 70,
-      backgroundColor: Colors.tabBar
-    },
-    headerTitleStyle: {
-      fontFamily: 'bebas-kai',
-      fontWeight: '200',
-      fontSize: 32
-    },
-    headerRight: (
-      <Image
-        source={require('../assets/images/magnifier.png')}
-        style={{ height: 30, width: 30, marginRight: 10 }}
-      />
-    )
+    header: null
   }
 
   componentDidMount() {
     this._retrieveData()
-  }
-
-  _storeData = async data => {
-    try {
-      await AsyncStorage.setItem('CARDS', JSON.stringify(data))
-    } catch {}
   }
 
   _retrieveData = async () => {
@@ -64,8 +44,14 @@ export default class CardScreen extends React.Component {
       .then(response => response.json())
       .then(data => {
         this.props.saveData(data)
-        this._storeData(data.data)
+        this._storeData(data)
       })
+  }
+
+  _storeData = async data => {
+    try {
+      await AsyncStorage.setItem('CARDS', JSON.stringify(data))
+    } catch {}
   }
 
   render() {
@@ -78,16 +64,10 @@ export default class CardScreen extends React.Component {
         }}
       >
         <Image
-          style={{
-            width: Layout.window.width,
-            height: Layout.window.height,
-            resizeMode: 'stretch',
-            position: 'absolute',
-            top: 0,
-            left: 0
-          }}
+          style={styles.background}
           source={require('../assets/images/Background.jpg')}
         />
+        <SearchBar data={this.props} />
         <ScrollView style={styles.scroller}>
           <View
             automaticallyAdjustContentInsets={false}
@@ -114,5 +94,13 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: 20,
     maxWidth: 250
+  },
+  background: {
+    width: Layout.window.width,
+    height: Layout.window.height,
+    resizeMode: 'stretch',
+    position: 'absolute',
+    top: 0,
+    left: 0
   }
 })
