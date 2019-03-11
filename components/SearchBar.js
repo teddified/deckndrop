@@ -18,9 +18,11 @@ export default class SearchBar extends Component {
   filter() {
     const cards = this.props.data.state.cards.data
     const match = cards.map((element, index) => {
-      const temp = element.name.includes(this.state.searchValue)
-      if (temp) return element
+      const regElement = new RegExp(this.state.searchValue, 'i')
+      const found = element.name.match(regElement)
+      if (found) return element
     })
+
     const filtered = Object.keys(match).reduce((acc, key) => {
       const _acc = acc
       if (match[key] !== undefined) _acc[key] = match[key]

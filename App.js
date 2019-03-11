@@ -3,6 +3,8 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { AppLoading, Asset, Font, Icon } from 'expo'
 import AppNavigator from './navigation/AppNavigator'
 import { Provider } from 'react-redux'
+import LoginScreen from './screens/LoginScreen'
+import LoadingScreen from './screens/LoadingScreen'
 
 import { createStore } from 'redux'
 import reducer from './reducer'
@@ -34,7 +36,8 @@ export default class App extends React.Component {
         <Provider store={store}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
-            <AppNavigator />
+            {/* <AppNavigator /> */}
+            {this.state.isLoadingComplete ? <LoginScreen /> : <LoadingScreen />}
           </View>
         </Provider>
       )
@@ -44,8 +47,8 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require('./assets/images/robot-dev.png'),
-        require('./assets/images/robot-prod.png')
+        require('./assets/images/exit.png'),
+        require('./assets/images/Background.jpg')
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
