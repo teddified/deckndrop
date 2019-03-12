@@ -22,7 +22,7 @@ CardStack.navigationOptions = {
     activeTintColor: 'white',
     style: {
       height: 60,
-      backgroundColor: Colors.tabBar
+      backgroundColor: Colors.darkgrey
     }
   },
   tabBarIcon: ({ focused }) => (
@@ -47,7 +47,7 @@ DeckStack.navigationOptions = {
     activeTintColor: 'white',
     style: {
       height: 60,
-      backgroundColor: Colors.tabBar
+      backgroundColor: Colors.darkgrey
     }
   },
   tabBarIcon: ({ focused }) => (
@@ -72,7 +72,7 @@ StatsStack.navigationOptions = {
     activeTintColor: 'white',
     style: {
       height: 60,
-      backgroundColor: Colors.tabBar
+      backgroundColor: Colors.darkgrey
     }
   },
   tabBarIcon: ({ focused }) => (

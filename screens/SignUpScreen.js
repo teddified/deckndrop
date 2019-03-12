@@ -14,28 +14,24 @@ export default class LoginScreen extends Component {
     errorMessage: null
   }
 
-  handleLogin() {
-    console.log('check')
-  }
-
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.loginContainer}>
           <Text style={styles.logo}>Deck n' Drop</Text>
-          <Text style={styles.login}>Login</Text>
+          <Text style={styles.signUp}>Sign Up</Text>
           <TextInput
             placeholder="Email / User"
-            placeholderTextColor="white"
             autoCapitalize="none"
+            placeholderTextColor="white"
             onChangeText={email => this.setState({ email })}
             value={this.state.email}
             style={styles.inputField}
           />
           <TextInput
             placeholder="Password"
-            placeholderTextColor="white"
             secureTextEntry
+            placeholderTextColor="white"
             onChangeText={password => this.setState({ password })}
             value={this.state.password}
             style={styles.inputField}
@@ -45,13 +41,13 @@ export default class LoginScreen extends Component {
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
         )}
         <Button
-          title="Login"
+          title="Sign Up"
           style={{ marginTop: 10 }}
-          onPress={() => this.handleLogin()}
+          onPress={() => this.props.navigation.navigate('LoginScreen')}
         />
         <Button
-          title="Sign Up"
-          onPress={() => this.props.navigation.navigate('SignUpScreen')}
+          title="Back"
+          onPress={() => this.props.navigation.navigate('LoginScreen')}
         />
       </View>
     )
@@ -90,7 +86,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightgrey,
     marginTop: 20
   },
-  login: {
+  signUp: {
     fontFamily: 'bebas-kai',
     fontWeight: '200',
     fontSize: 24,

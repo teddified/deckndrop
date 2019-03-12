@@ -17,7 +17,7 @@ export default class DeckScreen extends React.Component {
     headerTintColor: 'white',
     headerStyle: {
       height: 70,
-      backgroundColor: Colors.tabBar
+      backgroundColor: Colors.darkgrey
     },
     headerTitleStyle: {
       fontFamily: 'bebas-kai',

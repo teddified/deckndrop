@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 75,
-    backgroundColor: Colors.tabBar,
+    backgroundColor: Colors.darkgrey,
     padding: 5,
     flexWrap: 'wrap',
     alignItems: 'center',

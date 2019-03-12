@@ -36,8 +36,8 @@ export default class App extends React.Component {
         <Provider store={store}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
-            {/* <AppNavigator /> */}
-            {this.state.isLoadingComplete ? <LoginScreen /> : <LoadingScreen />}
+            <AppNavigator />
+            {/* {this.state.isLoadingComplete ? <LoginScreen /> : <LoadingScreen />} */}
           </View>
         </Provider>
       )
