@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "394625415331",
+    "firebase_url": "https://deckndrop.firebaseio.com",
+    "project_id": "deckndrop",
+    "storage_bucket": "deckndrop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394625415331:android:0bc65f088f826319",
+        "android_client_info": {
+          "package_name": "com.duve.deckndrop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394625415331-l8i4cj8dvcmtp28i06cffikclatgh2qf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNCJu55ZpshRCRPEWBEQgEVfg7Z7ktUTY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
