@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import Colors from '../constants/Colors'
 import Button from '../components/Button'
+import firebase from 'react-native-firebase'
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -15,7 +16,12 @@ export default class LoginScreen extends Component {
   }
 
   handleLogin() {
-    console.log('check')
+    const { email, password } = this.state
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('Main'))
+      .catch(error => this.setState({ errorMessage: error.message }))
   }
 
   render() {
@@ -41,9 +47,13 @@ export default class LoginScreen extends Component {
             style={styles.inputField}
           />
         </View>
-        {this.state.errorMessage && (
-          <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )}
+        <View style={{ height: 40, width: 220, marginTop: 10 }}>
+          {this.state.errorMessage && (
+            <Text style={{ color: 'red', textAlign: 'center' }}>
+              {this.state.errorMessage}
+            </Text>
+          )}
+        </View>
         <Button
           title="Login"
           style={{ marginTop: 10 }}

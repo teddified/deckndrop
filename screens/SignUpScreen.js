@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import Colors from '../constants/Colors'
 import Button from '../components/Button'
+import firebase from 'react-native-firebase'
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -12,6 +13,14 @@ export default class LoginScreen extends Component {
     email: null,
     password: null,
     errorMessage: null
+  }
+
+  handleSignUp() {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('Main'))
+      .catch(error => this.setState({ errorMessage: error.message }))
   }
 
   render() {
@@ -37,13 +46,17 @@ export default class LoginScreen extends Component {
             style={styles.inputField}
           />
         </View>
-        {this.state.errorMessage && (
-          <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )}
+        <View style={{ height: 40, width: 220, marginTop: 10 }}>
+          {this.state.errorMessage && (
+            <Text style={{ color: 'red', textAlign: 'center' }}>
+              {this.state.errorMessage}
+            </Text>
+          )}
+        </View>
         <Button
           title="Sign Up"
           style={{ marginTop: 10 }}
-          onPress={() => this.props.navigation.navigate('LoginScreen')}
+          onPress={() => this.handleSignUp()}
         />
         <Button
           title="Back"

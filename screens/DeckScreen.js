@@ -16,7 +16,7 @@ export default class DeckScreen extends React.Component {
     title: "Deck n'Drop",
     headerTintColor: 'white',
     headerStyle: {
-      height: 70,
+      height: 50,
       backgroundColor: Colors.darkgrey
     },
     headerTitleStyle: {
