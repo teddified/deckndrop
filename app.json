@@ -5,10 +5,7 @@
     "slug": "expo.io@duvedeckndrop",
     "privacy": "public",
     "sdkVersion": "31.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -20,17 +17,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.test.test",
+      "bundleIdentifier": "com.duve.deckndrop",
       "publishBundlePath": "ios/deck-n-drop/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/deck-n-drop/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "package": "com.test.test",
+      "package": "com.duve.deckndrop",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
